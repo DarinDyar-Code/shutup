@@ -210,6 +210,25 @@
         <div class="text-8xl font-black italic mb-8 opacity-10 tracking-tighter">STREETCRED IQ</div>
         <p class="text-gray-600 text-[10px] font-bold uppercase tracking-[0.8em]">2026 // FROM THE STREETS FOR THE STREETS</p>
     </footer>
+    <div id="signup-modal" class="fixed inset-0 z-[5000] hidden items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeModal()"></div>
+    <div class="relative bg-black border border-[#0070ff] p-8 rounded-[30px] max-w-md w-full z-10">
+        <h2 class="text-3xl font-black italic uppercase mb-2 text-white">Join Phase 01</h2>
+        <p class="text-gray-500 mb-6 text-[10px] uppercase tracking-widest">Limited spots available for creators.</p>
+        
+        <form id="waitlist-form" class="space-y-4">
+            <input name="Instagram" type="text" placeholder="Instagram Handle" required class="w-full bg-[#111] border border-white/10 p-4 rounded-xl text-white outline-none focus:border-[#0070ff]">
+            <select name="City" class="w-full bg-[#111] border border-white/10 p-4 rounded-xl text-white outline-none">
+                <option>Baghdad</option>
+                <option>Erbil</option>
+                <option>Sulaymaniyah</option>
+            </select>
+            <input name="Phone" type="text" placeholder="ZainCash / FastPay Number" required class="w-full bg-[#111] border border-white/10 p-4 rounded-xl text-white outline-none focus:border-[#0070ff]">
+            <button type="submit" id="submit-btn" class="w-full bg-[#0070ff] py-5 rounded-xl font-black uppercase tracking-widest text-white">Secure My Spot</button>
+        </form>
+        <div id="success-msg" class="hidden text-green-500 font-bold uppercase mt-4 text-center text-sm italic">You're on the list. Check your DMs soon.</div>
+    </div>
+</div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
@@ -406,6 +425,40 @@
 
         // Initialize with English
         changeLang('en');
+        // Function to show the form
+function openModal() {
+    document.getElementById('signup-modal').classList.remove('hidden');
+    document.getElementById('signup-modal').classList.add('flex');
+}
+
+// Function to hide the form
+function closeModal() {
+    document.getElementById('signup-modal').classList.add('hidden');
+    document.getElementById('signup-modal').classList.remove('flex');
+}
+
+// Form Submission Logic
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzmyOMJLj3eD-dNI435d9yhqCiiVwQO6POI_JxDaTHepRaC-6w9YSCPbLUgrnQDBU8MwQ/exec'; // <--- YOU WILL PASTE YOUR LINK HERE
+const form = document.getElementById('waitlist-form');
+
+form.addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.innerHTML = "REGISTERING...";
+    btn.disabled = true;
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            btn.classList.add('hidden');
+            document.getElementById('success-msg').classList.remove('hidden');
+        })
+        .catch(error => {
+            alert('Error! Check your internet.');
+            btn.disabled = false;
+            btn.innerHTML = "Secure My Spot";
+        });
+});
     </script>
 </body>
 </html>
+
