@@ -40,9 +40,9 @@
             <a href="#faq" id="nav-4" class="hover:text-[#0070ff] transition">FAQ</a>
         </div>
         <div class="flex border border-white/20 rounded-full p-1 bg-black scale-90">
-            <button onclick="openModal()" class="bg-[#0070ff] px-6 py-2 mr-4 rounded-full text-[10px] font-bold uppercase tracking-widest">Join List</button>
             <button id="btn-en" onclick="changeLang('en')" class="px-4 py-1 text-[10px] font-bold rounded-full transition active-lang">EN</button>
             <button id="btn-ar" onclick="changeLang('ar')" class="px-4 py-1 text-[10px] font-bold rounded-full transition">AR</button>
+            <button onclick="openModal()" class="bg-[#0070ff] px-6 py-2 mr-4 rounded-full text-[10px] font-bold uppercase tracking-widest">Join List</button>
             <button id="btn-ku" onclick="changeLang('ku')" class="px-4 py-1 text-[10px] font-bold rounded-full transition">KU</button>
         </div>
     </nav>
@@ -426,6 +426,7 @@
 
         // Initialize with English
         changeLang('en');
+
         // Function to show the form
 function openModal() {
     document.getElementById('signup-modal').classList.remove('hidden');
@@ -439,7 +440,7 @@ function closeModal() {
 }
 
 // Form Submission Logic
-const scriptURL = 'https://script.google.com/macros/s/AKfycbz4Z-X_RLYFyh9VCd0rmrl_dnz7kQXQ8ERwxr6V21sJPQYjg_3O-yvKxxztcqKkjfRyNw/exec'; // <--- YOU WILL PASTE YOUR LINK HERE
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzhqFno9Juwn1kPU5AitW4EGj5vg71OTMOLosmOIc8dXF9ITNoamFEfQYa32e9FPf07Ng/exec'; // <--- YOU WILL PASTE YOUR LINK HERE
 const form = document.getElementById('waitlist-form');
 
 form.addEventListener('submit', e => {
@@ -462,6 +463,3 @@ form.addEventListener('submit', e => {
     </script>
 </body>
 </html>
-
-
-
