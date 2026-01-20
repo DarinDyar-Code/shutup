@@ -53,7 +53,7 @@
             <h1 id="hero-title" class="text-7xl md:text-[140px] font-black mb-6 tracking-tighter leading-[0.85] uppercase">STREETS <br><span class="text-outline italic">OF IRAQ.</span></h1>
             <p id="hero-desc" class="text-lg md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 font-medium">The first hyper-local marketing engine built for the neighborhoods of Iraq. We turn your social influence into real-world rewards.</p>
             <div class="flex flex-col md:flex-row gap-6 justify-center">
-                <a href="#map-section" id="hero-btn-1" class="bg-[#0070ff] text-white px-12 py-6 text-xl font-black uppercase hover:scale-105 transition shadow-[0_0_40px_rgba(0,112,255,0.4)]">Find a Bounty</a>
+                <button onclick="openModal()" id="hero-btn-1" class="bg-[#0070ff] text-white px-12 py-6 text-xl font-black uppercase hover:scale-105 transition shadow-[0_0_40px_rgba(0,112,255,0.4)]">Find a Bounty</button>
                 <a href="#business" id="hero-btn-2" class="border-2 border-white text-white px-12 py-6 text-xl font-black uppercase hover:bg-white hover:text-black transition">Post a Bounty</a>
             </div>
         </div>
@@ -150,7 +150,7 @@
                 <h3 id="biz-subtitle" class="text-2xl font-bold uppercase mb-6 text-white">For the shop owners who get it.</h3>
                 <p id="biz-desc" class="text-lg font-medium leading-relaxed mb-10 text-gray-400">Forget paying for "impressions." Pay for real feet on the ground. StreetCred lets you set a budget and only pay when customers actually show up and promote you.</p>
                 <div class="flex gap-4">
-                    <button id="hub-btn-1" class="bg-[#0070ff] text-white px-10 py-5 font-black uppercase text-sm hover:translate-x-2 transition-all">Register Shop</button>
+                    <button onclick="openModal()" id="hub-btn-1" class="bg-[#0070ff] text-white px-10 py-5 font-black uppercase text-sm hover:translate-x-2 transition-all">Register Shop</button>
                     <button id="hub-btn-2" class="border border-white/20 text-white px-10 py-5 font-black uppercase text-sm hover:bg-white hover:text-black transition-all">Case Studies</button>
                 </div>
             </div>
@@ -211,11 +211,13 @@
         <div class="text-8xl font-black italic mb-8 opacity-10 tracking-tighter">STREETCRED IQ</div>
         <p class="text-gray-600 text-[10px] font-bold uppercase tracking-[0.8em]">2026 // FROM THE STREETS FOR THE STREETS</p>
     </footer>
+
     <div id="signup-modal" class="fixed inset-0 z-[5000] hidden items-center justify-center p-4">
     <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeModal()"></div>
+    
     <div class="relative bg-black border border-[#0070ff] p-8 rounded-[30px] max-w-md w-full z-10">
         <h2 class="text-3xl font-black italic uppercase mb-2 text-white">Join Phase 01</h2>
-        <p class="text-gray-500 mb-6 text-[10px] uppercase tracking-widest">Limited spots available for creators.</p>
+        <p class="text-gray-500 mb-6 text-[10px] uppercase tracking-widest">Limited spots available for creators and shops.</p>
         
         <form id="waitlist-form" class="space-y-4">
             <input name="Instagram" type="text" placeholder="Instagram Handle" required class="w-full bg-[#111] border border-white/10 p-4 rounded-xl text-white outline-none focus:border-[#0070ff]">
@@ -225,9 +227,10 @@
                 <option>Sulaymaniyah</option>
             </select>
             <input name="Phone" type="text" placeholder="ZainCash / FastPay Number" required class="w-full bg-[#111] border border-white/10 p-4 rounded-xl text-white outline-none focus:border-[#0070ff]">
-            <button type="submit" id="submit-btn" class="w-full bg-[#0070ff] py-5 rounded-xl font-black uppercase tracking-widest text-white">Secure My Spot</button>
+            <button type="submit" id="submit-btn" class="w-full bg-[#0070ff] py-5 rounded-xl font-black uppercase tracking-widest text-white hover:scale-105 transition">Secure My Spot</button>
         </form>
-        <div id="success-msg" class="hidden text-green-500 font-bold uppercase mt-4 text-center text-sm italic">You're on the list. Check your DMs soon.</div>
+        
+        <div id="success-msg" class="hidden text-[#0070ff] font-bold uppercase mt-4 text-center text-sm italic">You're on the list. Check your DMs soon.</div>
     </div>
 </div>
 
@@ -427,20 +430,22 @@
         // Initialize with English
         changeLang('en');
 
-        // Function to show the form
+        // Function to show the modal
 function openModal() {
-    document.getElementById('signup-modal').classList.remove('hidden');
-    document.getElementById('signup-modal').classList.add('flex');
+    const modal = document.getElementById('signup-modal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
 }
 
-// Function to hide the form
+// Function to hide the modal
 function closeModal() {
-    document.getElementById('signup-modal').classList.add('hidden');
-    document.getElementById('signup-modal').classList.remove('flex');
+    const modal = document.getElementById('signup-modal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
 }
 
-// Form Submission Logic
-const scriptURL = 'https://script.google.com/macros/s/AKfycbztD6wcdKQx5txMmmTmqLxxngrA8kQ62Fv39Ys3UDB665qw1JUvEZ3eIjMEVvUWuDa7HA/exec'; // <--- YOU WILL PASTE YOUR LINK HERE
+// REPLACE THE URL BELOW with your Google Web App URL (the one ending in /exec)
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyA3AH2I4BKWHwqMLChgI1tcK4NcKGt43vVCFYBSY_g6_I0uBwztEwYAQ9AvbvRm4u4/exec'; 
 const form = document.getElementById('waitlist-form');
 
 form.addEventListener('submit', e => {
@@ -453,9 +458,11 @@ form.addEventListener('submit', e => {
         .then(response => {
             btn.classList.add('hidden');
             document.getElementById('success-msg').classList.remove('hidden');
+            // Closes modal after 3 seconds so user can see the success message
+            setTimeout(closeModal, 3000); 
         })
         .catch(error => {
-            alert('Error! Check your internet.');
+            alert('Error! Check your connection.');
             btn.disabled = false;
             btn.innerHTML = "Secure My Spot";
         });
@@ -463,6 +470,3 @@ form.addEventListener('submit', e => {
     </script>
 </body>
 </html>
-
-
-
