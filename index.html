@@ -456,10 +456,17 @@ form.addEventListener('submit', e => {
 
     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
         .then(response => {
+            // New logic starts here
             btn.classList.add('hidden');
             document.getElementById('success-msg').classList.remove('hidden');
-            // Closes modal after 3 seconds so user can see the success message
-            setTimeout(closeModal, 3000); 
+            
+            console.log("Entry recorded in Google Sheet");
+            
+            setTimeout(() => {
+                closeModal();
+                // If you want to redirect them to your Instagram, remove the // below
+                 window.location.href = "https://instagram.com/vdarinn"; 
+            }, 3000);
         })
         .catch(error => {
             alert('Error! Check your connection.');
@@ -470,3 +477,4 @@ form.addEventListener('submit', e => {
     </script>
 </body>
 </html>
+
