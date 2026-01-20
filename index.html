@@ -32,18 +32,18 @@
 <body class="selection:bg-[#0070ff] selection:text-white" dir="ltr">
 
     <nav class="flex justify-between items-center p-6 border-b border-white/10 sticky top-0 z-[1000] bg-black/80 backdrop-blur-md">
-        <div class="text-3xl font-black tracking-tighter italic">STREETCRED <span class="text-[#0070ff] not-italic">IQ</span></div>
+        <div class="text-xl md:text-3xl font-black tracking-tighter italic shrink-0">STREETCRED <span class="text-[#0070ff] not-italic">IQ</span></div>
         <div class="hidden md:flex items-center gap-8 text-[10px] font-bold uppercase tracking-widest">
             <a href="#blueprint" id="nav-1" class="hover:text-[#0070ff] transition">How it works</a>
             <a href="#creators" id="nav-2" class="hover:text-[#0070ff] transition">Creators</a>
             <a href="#business" id="nav-3" class="hover:text-[#0070ff] transition">Business</a>
             <a href="#faq" id="nav-4" class="hover:text-[#0070ff] transition">FAQ</a>
         </div>
-        <div class="flex border border-white/20 rounded-full p-1 bg-black scale-90">
+        <div class="flex border border-white/20 rounded-full p-0.5 md:p-1 bg-black scale-75 md:scale-90 ml-auto">
             <button onclick="openModal()" class="bg-[#0070ff] px-6 py-2 mr-4 rounded-full text-[10px] font-bold uppercase tracking-widest">Join List</button>
-            <button id="btn-en" onclick="changeLang('en')" class="px-4 py-1 text-[10px] font-bold rounded-full transition active-lang">EN</button>
-            <button id="btn-ar" onclick="changeLang('ar')" class="px-4 py-1 text-[10px] font-bold rounded-full transition">AR</button>
-            <button id="btn-ku" onclick="changeLang('ku')" class="px-4 py-1 text-[10px] font-bold rounded-full transition">KU</button>
+            <button id="btn-en" onclick="changeLang('en')" class="px-2 md:px-4 py-1 text-[10px] font-bold rounded-full transition active-lang">EN</button>
+            <button id="btn-ar" onclick="changeLang('ar')" class="px-2 md:px-4 py-1 text-[10px] font-bold rounded-full transition">AR</button>
+            <button id="btn-ku" onclick="changeLang('ku')" class="px-2 md:px-4 py-1 text-[10px] font-bold rounded-full transition">KU</button>
         </div>
     </nav>
 
@@ -482,6 +482,7 @@ form.addEventListener('submit', e => {
     </script>
 </body>
 </html>
+
 
 
 
